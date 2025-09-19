@@ -2,35 +2,247 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>KC Chat</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FedEx Express Delivery Company</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff;
+    }
+
+    header {
+      background-color: #4d148c;
+      padding: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: white;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 24px;
+    }
+
+    .banner {
+      background: url('bg.jpg') no-repeat center center;
+      background-size: cover;
+      color: white;
+      text-align: center;
+      padding: 80px 20px;
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 15px;
+      padding: 20px;
+      background-color: #f3f3f3;
+    }
+
+    .controls button {
+      padding: 15px 25px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      background-color: white;
+      box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
+    }
+
+    .track-btn {
+      background-color: #4d148c;
+      color: white;
+    }
+
+    .track-form {
+      display: flex;
+      justify-content: center;
+      padding: 20px;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .track-form input {
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 2px solid orange;
+      width: 250px;
+    }
+
+    .track-form button {
+      padding: 10px 15px;
+      background-color: orange;
+      border: none;
+      border-radius: 5px;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    table {
+      margin: 30px auto;
+      border-collapse: collapse;
+      width: 95%;
+      max-width: 700px;
+      display: none;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 10px;
+      background-color: #fff;
+    }
+
+    th {
+      background-color: #4d148c;
+      color: white;
+    }
+
+    .package-image {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+      border-radius: 8px;
+      margin-top: 15px;
+    }
+
+    footer {
+      background-color: #4d148c;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .responsive-img {
+      width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 <body>
-  <div id="login-page" class="page">
-    <h2>KC Chat Login</h2>
-    <input type="email" id="email" placeholder="Email">
-    <input type="password" id="password" placeholder="Password">
-    <button onclick="login()">Login</button>
-    <button onclick="signup()">Sign Up</button>
-  </div>
 
-  <div id="chat-page" class="page hidden">
-    <div class="header">
-      <h2>KC Chat</h2>
-      <button onclick="logout()">Logout</button>
-    </div>
-    <div id="messages"></div>
-    <div class="chat-input">
-      <input type="text" id="messageInput" placeholder="Type your message...">
-      <button onclick="sendMessage()">Send</button>
-    </div>
-  </div>
+<header>
+  <h1>FedEx</h1>
+  <div style="font-size: 24px;">👤</div>
+</header>
 
-  <!-- Firebase SDKs -->
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js"></script>
-  <script src="app.js"></script>
+<img src="fedex-worker.jpg" alt="FedEx Worker" class="responsive-img" />
+<div class="controls">
+  <button>FARES AND TRANSIT TIMES</button>
+  <button class="track-btn">TRACK</button>
+  <button>SEND</button>
+  <button>RETURN</button>
+</div>
+
+<div class="track-form">
+  <input type="text" id="trackingId" placeholder="TRACKING ID" />
+  <button onclick="trackPackage()">TRACK →</button>
+</div>
+
+<table id="resultsTable">
+  <tbody id="resultsBody"></tbody>
+</table>
+
+<footer>
+  © 2025 FedEx | All rights reserved
+</footer>
+
+<script>
+  const trackingData = {
+    "FEDEX-3069G": {
+      sender: { name: "Dr Jennifer", country: "Afghanistan", email: "jn@gmail.com", phone: "00746525472" },
+      receiver: { name: "Tatu Nicolae", country: "Greece", email: "nikolaetatu688@gmail.com", direction: "PLOIESTI STRADA BRUMARELELOR NR3 BL 120SCC", phone: "+30 694 357 1324" },
+      arrival: "28th July 2025",
+      location: "Greece",
+      image: "fedex-package.jpg"
+    },
+    "FEDEX-5195G": {
+      sender: { name: "Jennifer Helena", country: "Yemen", email: "Jenh@gmail.com", phone: "00735452674" },
+      receiver: { name: "Avenida Manuel ", country: "peru", email: "empty", direction: "San Juan de Lima District Loyola Central peru", phone: "+51950 272 377" },
+      arrival: "28th July 2025",
+      location: "Peru",
+      image: "fedex-package.jpg"
+    },
+    "FEDEX-3012304412": {
+      sender: { name: "Jennifer Helena ", country: "Afghanistan", email: "jen23@gmail.com", phone: "+00435267485" },
+      receiver: { name: "Christopher Agustin Medellin", country: "Honduras", email: "medellincristopher04@gmail.com", direction: "Armenta San Pedro sula Honduras 98155209", phone: "+50498155209" },
+      arrival: " 4th August 2025",
+      location: "Honduras",
+      image: "fedex-package.jpg"
+    },
+    "FEDEX-KIM28": {
+      sender: { name: "Kim Ron", country: "Korea", email: "kim@krmail.com", phone: "+82 101234567" },
+      receiver: { name: "Halima Yusuf", country: "Nigeria", email: "halima@gmail.com", direction: "Kaduna North 223", phone: "+234 8134567890" },
+      arrival: "28th July 2025",
+      location: "At customs clearance - Abuja",
+      image: "fedex-package.jpg"
+    },
+    "FEDEX-FR77A": {
+      sender: { name: "Claire Dupont", country: "France", email: "claire@poste.fr", phone: "+33 612345678" },
+      receiver: { name: "Chinedu Okafor", country: "Nigeria", email: "chinedu@gmail.com", direction: "Enugu South, Plot 2", phone: "+234 7045678901" },
+      arrival: "5th August 2025",
+      location: "Departed Paris CDG Airport",
+      image: "fedex-package.jpg"
+    }
+  };
+
+  function trackPackage() {
+    const input = document.getElementById("trackingId").value.trim().toUpperCase();
+    const data = trackingData[input];
+    const table = document.getElementById("resultsTable");
+    const body = document.getElementById("resultsBody");
+
+    if (data) {
+      body.innerHTML = `
+        <tr><th colspan="2">SENDER'S INFORMATION</th></tr>
+        <tr><td>Name</td><td>${data.sender.name}</td></tr>
+        <tr><td>Country</td><td>${data.sender.country}</td></tr>
+        <tr><td>Email</td><td>${data.sender.email}</td></tr>
+        <tr><td>Phone</td><td>${data.sender.phone}</td></tr>
+
+        <tr><th colspan="2">RECEIVER'S INFORMATION</th></tr>
+        <tr><td>Name</td><td>${data.receiver.name}</td></tr>
+        <tr><td>Country</td><td>${data.receiver.country}</td></tr>
+        <tr><td>Email</td><td>${data.receiver.email}</td></tr>
+        <tr><td>Direction</td><td>${data.receiver.direction}</td></tr>
+        <tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
+
+        <tr><th colspan="2">PACKAGE INFORMATION</th></tr>
+        <tr><td>Date of Arrival</td><td>${data.arrival}</td></tr>
+        <tr><td>Current Location</td><td><strong>${data.location}</strong></td></tr>
+
+        <tr><th colspan="2">PACKAGE IMAGE</th></tr>
+        <tr><td colspan="2"><img src="${data.image}" class="package-image" alt="Package"></td></tr>
+      `;
+      table.style.display = "table";
+    } else {
+      table.style.display = "none";
+      alert("❌ Invalid Tracking ID. Please try again.");
+    }
+  }
+</script>
+
+<!--Start of Tawk.to Script-->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function () {
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/688747e2ac1426192beb8a30/default';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin', '*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+<!--End of Tawk.to Script-->
+
 </body>
 </html>
