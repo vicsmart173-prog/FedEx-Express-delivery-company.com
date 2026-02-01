@@ -4,11 +4,11 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>FedEx Express Delivery Company</title>
+
   <style>
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       margin: 0;
-      padding: 0;
       background-color: #fff;
     }
 
@@ -16,33 +16,17 @@
       background-color: #4d148c;
       padding: 20px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
       color: white;
     }
 
-    header h1 {
-      margin: 0;
-      font-size: 24px;
-    }
-
-    .banner {
-      background: url('bg.jpg') no-repeat center center;
-      background-size: cover;
-      color: white;
-      text-align: center;
-      padding: 80px 20px;
-      font-size: 28px;
-      font-weight: bold;
-    }
-
     .controls {
       display: flex;
-      flex-wrap: wrap;
       justify-content: center;
       gap: 15px;
       padding: 20px;
       background-color: #f3f3f3;
+      flex-wrap: wrap;
     }
 
     .controls button {
@@ -108,7 +92,6 @@
     .package-image {
       width: 100%;
       max-width: 400px;
-      height: auto;
       border-radius: 8px;
       margin-top: 15px;
     }
@@ -117,24 +100,19 @@
       background-color: #4d148c;
       color: white;
       text-align: center;
-      padding: 10px 0;
+      padding: 10px;
       font-size: 14px;
-    }
-
-    .responsive-img {
-      width: 100%;
-      height: auto;
     }
   </style>
 </head>
+
 <body>
 
 <header>
   <h1>FedEx</h1>
-  <div style="font-size: 24px;">👤</div>
+  <div>👤</div>
 </header>
 
-<img src="fedex-worker.jpg" alt="FedEx Worker" class="responsive-img" />
 <div class="controls">
   <button>FARES AND TRANSIT TIMES</button>
   <button class="track-btn">TRACK</button>
@@ -161,28 +139,28 @@
       sender: { name: "Dr Jennifer", country: "Afghanistan", email: "jen32@gmail.com", phone: "00746525472" },
       receiver: { name: "JUAN CARLOS ZAPATA LÓPEZ", country: "Colombia", email: "empty", direction: "CALLE 76EA #85-07- BARRIO ROBLEDO VILLA FLORA", phone: "+57 314 7237241" },
       arrival: "31st January 2026",
-      location: "Alfredo international Airport Leticia. Amazonas department Colombia",
+      location: "Alfredo International Airport, Leticia – Amazonas, Colombia",
       image: "fedex-package.jpg"
     },
     "004096784422": {
       sender: { name: "Jennifer Helena", country: "Afghanistan", email: "Jenh@gmail.com", phone: "00735452674" },
-      receiver: { name: "JUAN DAVID LOPAEZ IBANEZ", country: "Colombia", email: "IBAEZ9937@GMAIL.COM", direction: "CALLE 7 # 6-38, BARRIO LA PAZ, BOLIVAR, VALLE DEL CAUCA, COLOMBIA ", phone: "+57 314 6670333" },
+      receiver: { name: "JUAN DAVID LOPAEZ IBANEZ", country: "Colombia", email: "IBAEZ9937@GMAIL.COM", direction: "CALLE 7 # 6-38, BARRIO LA PAZ, BOLIVAR, VALLE DEL CAUCA, COLOMBIA", phone: "+57 314 6670333" },
       arrival: "16th Dec 2025",
       location: "Colombia",
       image: "fedex-package.jpg"
     },
     "014262134200": {
       sender: { name: "Jennifer Maria", country: "Afghanistan", email: "jenniferalbert124@gmail.com", phone: "+00435267485" },
-      receiver: { name: "Antonio Gonçalves Da Silva", country: "Brazil", email: "agoncalves.df@hotmail.com", direction: "SQS 212, BLOCO A, Apartamento 504, ASA SUL, BRASÍLIA, DISTRITO FEDERAL, BRASIL,  CEP: 70275-010;", phone: "+55 61 9284-6161" },
-      arrival: " 29 December 2025",
+      receiver: { name: "Antonio Gonçalves Da Silva", country: "Brazil", email: "agoncalves.df@hotmail.com", direction: "SQS 212, BLOCO A, Apartamento 504, ASA SUL, BRASÍLIA, DISTRITO FEDERAL, BRASIL, CEP: 70275-010;", phone: "+55 61 9284-6161" },
+      arrival: "29 December 2025",
       location: "Brazil",
       image: "fedex-package.jpg"
     },
     "067223206387": {
       sender: { name: "Jennifer maria", country: "Afghanistan", email: "jen32@gmail.com", phone: "00719025681" },
-      receiver: { name: "Ubiratan de Souza Batista", country: "Brazil", email: "empty", direction: " Rua Pedro Rosa numero 11 casa 9  ", phone: "+55 21 97723-6431" },
+      receiver: { name: "Ubiratan de Souza Batista", country: "Brazil", email: "empty", direction: "Rua Pedro Rosa numero 11 casa 9", phone: "+55 21 97723-6431" },
       arrival: "22 November 2025",
-      location: " Brazil",
+      location: "Brazil",
       image: "fedex-package.jpg"
     },
     "FEDEX-FR77A": {
@@ -195,54 +173,70 @@
   };
 
   function trackPackage() {
-    const input = document.getElementById("trackingId").value.trim().toUpperCase();
-    const data = trackingData[input];
+    const input = document.getElementById("trackingId");
+    const code = input.value.trim().toUpperCase();
+    const data = trackingData[code];
     const table = document.getElementById("resultsTable");
     const body = document.getElementById("resultsBody");
 
-    if (data) {
-      body.innerHTML = `
-        <tr><th colspan="2">SENDER'S INFORMATION</th></tr>
-        <tr><td>Name</td><td>${data.sender.name}</td></tr>
-        <tr><td>Country</td><td>${data.sender.country}</td></tr>
-        <tr><td>Email</td><td>${data.sender.email}</td></tr>
-        <tr><td>Phone</td><td>${data.sender.phone}</td></tr>
-
-        <tr><th colspan="2">RECEIVER'S INFORMATION</th></tr>
-        <tr><td>Name</td><td>${data.receiver.name}</td></tr>
-        <tr><td>Country</td><td>${data.receiver.country}</td></tr>
-        <tr><td>Email</td><td>${data.receiver.email}</td></tr>
-        <tr><td>Direction</td><td>${data.receiver.direction}</td></tr>
-        <tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
-
-        <tr><th colspan="2">PACKAGE INFORMATION</th></tr>
-        <tr><td>Date of Arrival</td><td>${data.arrival}</td></tr>
-        <tr><td>Current Location</td><td><strong>${data.location}</strong></td></tr>
-
-        <tr><th colspan="2">PACKAGE IMAGE</th></tr>
-        <tr><td colspan="2"><img src="${data.image}" class="package-image" alt="Package"></td></tr>
-      `;
-      table.style.display = "table";
-    } else {
+    if (!data) {
+      alert("❌ Invalid Tracking ID.");
       table.style.display = "none";
-      alert("❌ Invalid Tracking ID. Please try again.");
+      return;
     }
+
+    body.innerHTML = `
+      <tr><th colspan="2">SENDER INFORMATION</th></tr>
+      <tr><td>Name</td><td>${data.sender.name}</td></tr>
+      <tr><td>Country</td><td>${data.sender.country}</td></tr>
+      <tr><td>Email</td><td>${data.sender.email}</td></tr>
+      <tr><td>Phone</td><td>${data.sender.phone}</td></tr>
+
+      <tr><th colspan="2">RECEIVER INFORMATION</th></tr>
+      <tr><td>Name</td><td>${data.receiver.name}</td></tr>
+      <tr><td>Country</td><td>${data.receiver.country}</td></tr>
+      <tr><td>Email</td><td>${data.receiver.email}</td></tr>
+      <tr><td>Address</td><td>${data.receiver.direction}</td></tr>
+      <tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
+
+      <tr><th colspan="2">PACKAGE STATUS</th></tr>
+      <tr><td>Arrival Date</td><td>${data.arrival}</td></tr>
+      <tr><td>Current Location</td><td><strong>${data.location}</strong></td></tr>
+
+      <tr><th colspan="2">PACKAGE IMAGE</th></tr>
+      <tr><td colspan="2"><img src="${data.image}" class="package-image"></td></tr>
+    `;
+    table.style.display = "table";
   }
+
+  // AUTO-TRACK ONLY JUAN CARLOS
+  window.addEventListener("load", function () {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get("tracking");
+
+    if (code === "700637213819") {
+      const input = document.getElementById("trackingId");
+      input.value = code;
+
+      setTimeout(() => {
+        trackPackage();
+      }, 600);
+    }
+  });
 </script>
 
-<!--Start of Tawk.to Script-->
+<!-- Tawk.to Script -->
 <script type="text/javascript">
-  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-  (function () {
-    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-    s1.async = true;
-    s1.src = 'https://embed.tawk.to/688747e2ac1426192beb8a30/default';
-    s1.charset = 'UTF-8';
-    s1.setAttribute('crossorigin', '*');
-    s0.parentNode.insertBefore(s1, s0);
+  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+  (function(){
+    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
+    s1.async=true;
+    s1.src='https://embed.tawk.to/688747e2ac1426192beb8a30/default';
+    s1.charset='UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1,s0);
   })();
 </script>
-<!--End of Tawk.to Script-->
 
 </body>
 </html>
