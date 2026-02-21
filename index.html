@@ -1,115 +1,119 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>FedEx Express Delivery Company</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>FedEx Express Delivery Company</title>
 
-  <style>
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      margin: 0;
-      background-color: #fff;
-    }
+<style>
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  background-color: #fff;
+}
 
-    header {
-      background-color: #4d148c;
-      padding: 20px;
-      display: flex;
-      justify-content: space-between;
-      color: white;
-    }
+header {
+  background-color: #4d148c;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+}
 
-    .responsive-img {
-      width: 100%;
-      height: auto;
-      display: block;
-    }
+.responsive-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
 
-    .controls {
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      padding: 20px;
-      background-color: #f3f3f3;
-      flex-wrap: wrap;
-    }
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  background-color: #f3f3f3;
+  flex-wrap: wrap;
+}
 
-    .controls button {
-      padding: 15px 25px;
-      border: none;
-      border-radius: 6px;
-      font-size: 16px;
-      cursor: pointer;
-      background-color: white;
-      box-shadow: 0px 1px 3px rgba(0,0,0,0.2);
-    }
+.controls button {
+  padding: 15px 25px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: white;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
 
-    .track-btn {
-      background-color: #4d148c;
-      color: white;
-    }
+.track-btn {
+  background-color: #4d148c;
+  color: white;
+}
 
-    .track-form {
-      display: flex;
-      justify-content: center;
-      padding: 20px;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
+.track-form {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+  gap: 10px;
+}
 
-    .track-form input {
-      padding: 10px;
-      font-size: 16px;
-      border-radius: 5px;
-      border: 2px solid orange;
-      width: 250px;
-    }
+.track-form input {
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  border: 2px solid orange;
+  width: 250px;
+}
 
-    .track-form button {
-      padding: 10px 15px;
-      background-color: orange;
-      border: none;
-      border-radius: 5px;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-    }
+.track-form button {
+  padding: 10px 15px;
+  background-color: orange;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+}
 
-    table {
-      margin: 30px auto;
-      border-collapse: collapse;
-      width: 95%;
-      max-width: 700px;
-      display: none;
-    }
+table {
+  margin: 30px auto;
+  border-collapse: collapse;
+  width: 95%;
+  max-width: 800px;
+  display: none;
+}
 
-    th, td {
-      border: 1px solid #ddd;
-      padding: 10px;
-      background-color: #fff;
-    }
+th, td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
 
-    th {
-      background-color: #4d148c;
-      color: white;
-    }
+th {
+  background-color: #4d148c;
+  color: white;
+}
 
-    .package-image {
-      width: 100%;
-      max-width: 400px;
-      border-radius: 8px;
-      margin-top: 15px;
-    }
+.package-image {
+  width: 100%;
+  max-width: 400px;
+  border-radius: 8px;
+}
 
-    footer {
-      background-color: #4d148c;
-      color: white;
-      text-align: center;
-      padding: 10px;
-      font-size: 14px;
-    }
-  </style>
+.map-box {
+  width: 100%;
+  height: 320px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+footer {
+  background-color: #4d148c;
+  color: white;
+  text-align: center;
+  padding: 10px;
+}
+</style>
 </head>
 
 <body>
@@ -119,8 +123,7 @@
   <div>👤</div>
 </header>
 
-<!-- FedEx Worker Image -->
-<img src="fedex-worker.jpg" alt="FedEx Worker" class="responsive-img" />
+<img src="fedex-worker.jpg" class="responsive-img">
 
 <div class="controls">
   <button>FARES AND TRANSIT TIMES</button>
@@ -130,7 +133,7 @@
 </div>
 
 <div class="track-form">
-  <input type="text" id="trackingId" placeholder="TRACKING ID" />
+  <input id="trackingId" placeholder="TRACKING ID">
   <button onclick="trackPackage()">TRACK →</button>
 </div>
 
@@ -138,113 +141,158 @@
   <tbody id="resultsBody"></tbody>
 </table>
 
-<footer>
-  © 2026 FedEx | All rights reserved
-</footer>
+<footer>© 2026 FedEx | All rights reserved</footer>
 
 <script>
-  const trackingData = {
-    "007637220019": {
-      sender: { name: "Dr Jennifer", country: "Afghanistan", email: "jen32@gmail.com", phone: "00746525472" },
-      receiver: { name: "Alejandro Guerrero Díaz", country: "Colombia", email: "ALEJANDRO898GUERRDRO@GMAIL.COM", direction: "Zaragoza, AntioquiaVereda Angostura", phone: "+57 314 616 7312" },
-      arrival: "19 February 2026",
-      location: "Alfredo International Airport, Leticia – Amazonas, Colombia",
-      image: "fedex-package.jpg"
-    },
-    "700106784422": {
-      sender: { name: "Jennifer Helena", country: "Afghanistan", email: "Jenh@gmail.com", phone: "00735452674" },
-      receiver: { name: "CLEVERSÓN RIBEIRO DOS SANTOS", country: "brazil", email: "empty", direction: "AV JOAQUIM RIBEIRO, 236 BAIRRO SANTA LUZIA UBERLÂNDIA – MINAS GERAIS BRAZIL", phone: "+55 34 8881-7605" },
-      arrival: "20th February 2026",
-      location: "📍 Rio Branco–Plácido de Castro International Airport (RBR) — Rio Branco, Acre",
-      image: "fedex-package.jpg"
-    },
-    "700262134270": {
-      sender: { name: "Fernando Martinez ", country: "Aleppo syria", email: "martfern124@gmail.com", phone: "+00435267485" },
-      receiver: { name: "Saudi Marina", country: "Russia", email: "empty", direction: "Kutuzova Street, Building 11, Block 4", phone: "+7 985 208-16-23" },
-      arrival: "2nd February 2026",
-      location: "Russia",
-      image: "fedex-package.jpg"
-    },
-    "700223206387": {
-      sender: { name: "Dr.Jennifer ", country: "Afghanistan", email: "jen32@gmail.com", phone: "00719025681" },
-      receiver: { name: "ROBINSON ALEXIS MARTINEZ ", country: "Colombia", email: "ROCHOARTINEZ1996@GMAIL.COM", direction: "CALLE 53 SUR 44-81 COLOMBIA", phone: "+57 320 3013499" },
-      arrival: "11 February 2026",
-      location: "Alfredo international airport Leticia. Amazon department",
-      image: "fedex-package.jpg"
-    },
-    "700342756987": {
-      sender: { name: "Jennifer benitha", country: "Afghanistan", email: "jen090599807@gmail.com", phone: "00254378194" },
-      receiver: { name: "CARLOS EDUARDO ARAUJO", country: "Brazil", email: "empty", direction: "QUERO DO VER ENTÃO ENDEREÇO RUA RONDÔNIA 415 JARDIM BRASIL CEP 18 702 680 NOME JOSÉ CARLOS MOURÃO", phone: "+55 14 99611-2867" },
-      arrival: "21st February 2026",
-      location: "📍Aeroporto Internacional de Boa Vista – Atlas Brasil Cantanhede",
-      image: "fedex-package.jpg"
-    }
-  };
+const trackingData = {
 
-  function trackPackage() {
-    const input = document.getElementById("trackingId");
-    const code = input.value.trim().toUpperCase();
-    const data = trackingData[code];
-    const table = document.getElementById("resultsTable");
-    const body = document.getElementById("resultsBody");
+"007637220019": {
+  sender:{name:"Dr Jennifer",country:"Afghanistan",email:"jen32@gmail.com",phone:"00746525472"},
+  receiver:{name:"Alejandro Guerrero Díaz",country:"Colombia",email:"ALEJANDRO898GUERRDRO@GMAIL.COM",direction:"Zaragoza, Antioquia Vereda Angostura",phone:"+57 314 616 7312"},
+  arrival:"19 February 2026",
+  route:[
+    {t:"📍 Kabul International Airport – Afghanistan",m:"Kabul International Airport"},
+    {t:"📍 Transit Hub – Middle East",m:"Dubai International Airport"},
+    {t:"📍 Leticia International Airport – Colombia",m:"Leticia International Airport"},
+    {t:"📍 Customs clearance – Colombia",m:"Leticia Colombia"},
+    {t:"📍 In transit to destination",m:"Zaragoza Antioquia"}
+  ],
+  image:"fedex-package.jpg"
+},
 
-    if (!data) {
-      alert("❌ Invalid Tracking ID.");
-      table.style.display = "none";
-      return;
-    }
+"700106784422": {
+  sender:{name:"Jennifer Helena",country:"Afghanistan",email:"Jenh@gmail.com",phone:"00735452674"},
+  receiver:{name:"CLEVERSÓN RIBEIRO DOS SANTOS",country:"Brazil",email:"empty",direction:"AV JOAQUIM RIBEIRO 236 UBERLÂNDIA – MG",phone:"+55 34 8881-7605"},
+  arrival:"20 February 2026",
+  route:[
+    {t:"📍 Kabul International Airport – Afghanistan",m:"Kabul International Airport"},
+    {t:"📍 Transit Hub – Europe",m:"Frankfurt Airport"},
+    {t:"📍 Rio Branco Airport – Acre",m:"Rio Branco Airport"},
+    {t:"📍 Regional sorting facility",m:"Rio Branco Acre"},
+    {t:"📍 Out for delivery",m:"Uberlandia MG"}
+  ],
+  image:"fedex-package.jpg"
+},
 
-    body.innerHTML = `
-      <tr><th colspan="2">SENDER INFORMATION</th></tr>
-      <tr><td>Name</td><td>${data.sender.name}</td></tr>
-      <tr><td>Country</td><td>${data.sender.country}</td></tr>
-      <tr><td>Email</td><td>${data.sender.email}</td></tr>
-      <tr><td>Phone</td><td>${data.sender.phone}</td></tr>
+"700262134270": {
+  sender:{name:"Fernando Martinez",country:"Syria",email:"martfern124@gmail.com",phone:"+00435267485"},
+  receiver:{name:"Saudi Marina",country:"Russia",email:"empty",direction:"Kutuzova Street, Building 11, Block 4",phone:"+7 985 208-16-23"},
+  arrival:"2 February 2026",
+  route:[
+    {t:"📍 Aleppo International Airport – Syria",m:"Aleppo International Airport"},
+    {t:"📍 Transit Hub – Turkey",m:"Istanbul Airport"},
+    {t:"📍 Sheremetyevo International Airport – Moscow",m:"Sheremetyevo Airport"},
+    {t:"📍 Customs processing – Russia",m:"Moscow Russia"},
+    {t:"📍 In transit to destination",m:"Kutuzova Street Moscow"}
+  ],
+  image:"fedex-package.jpg"
+},
 
-      <tr><th colspan="2">RECEIVER INFORMATION</th></tr>
-      <tr><td>Name</td><td>${data.receiver.name}</td></tr>
-      <tr><td>Country</td><td>${data.receiver.country}</td></tr>
-      <tr><td>Email</td><td>${data.receiver.email}</td></tr>
-      <tr><td>Address</td><td>${data.receiver.direction}</td></tr>
-      <tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
+"700223206387": {
+  sender:{name:"Dr Jennifer",country:"Afghanistan",email:"jen32@gmail.com",phone:"00719025681"},
+  receiver:{name:"ROBINSON ALEXIS MARTINEZ",country:"Colombia",email:"ROCHOARTINEZ1996@GMAIL.COM",direction:"CALLE 53 SUR 44-81",phone:"+57 320 3013499"},
+  arrival:"11 February 2026",
+  route:[
+    {t:"📍 Kabul International Airport – Afghanistan",m:"Kabul International Airport"},
+    {t:"📍 Transit Hub – Middle East",m:"Doha Airport"},
+    {t:"📍 Leticia Airport – Amazonas",m:"Leticia Airport"},
+    {t:"📍 Local distribution center",m:"Leticia Colombia"},
+    {t:"📍 Out for delivery",m:"Calle 53 Sur Colombia"}
+  ],
+  image:"fedex-package.jpg"
+},
 
-      <tr><th colspan="2">PACKAGE STATUS</th></tr>
-      <tr><td>Arrival Date</td><td>${data.arrival}</td></tr>
-      <tr><td>Current Location</td><td><strong>${data.location}</strong></td></tr>
+"700342756987": {
+  sender:{name:"Jennifer benitha",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"00254378194"},
+  receiver:{name:"CARLOS EDUARDO ARAUJO",country:"Brazil",email:"empty",direction:"RUA RONDÔNIA 415 JARDIM BRASIL",phone:"+55 14 99611-2867"},
+  arrival:"21 February 2026",
+  route:[
+    {t:"📍 Kabul International Airport – Afghanistan",m:"Kabul International Airport"},
+    {t:"📍 Transit Hub – Middle East",m:"Dubai International Airport"},
+    {t:"📍 São Paulo International Airport – GRU",m:"São Paulo GRU Airport"},
+    {t:"📍 Boa Vista International Airport",m:"Boa Vista Airport"},
+    {t:"📍 Em trânsito para o destino final",m:"Rondonia Brazil"},
+    {t:"📍 Saiu para entrega",m:"Rua Rondonia Brazil"}
+  ],
+  image:"fedex-package.jpg"
+}
 
-      <tr><th colspan="2">PACKAGE IMAGE</th></tr>
-      <tr><td colspan="2"><img src="${data.image}" class="package-image"></td></tr>
-    `;
-    table.style.display = "table";
+};
+
+let timer=null;
+
+function startLive(route){
+  let i=0;
+  const loc=document.getElementById("liveLocation");
+  const map=document.getElementById("mapFrame");
+  if(timer) clearInterval(timer);
+
+  loc.innerText=route[i].t;
+  map.src="https://www.google.com/maps?q="+encodeURIComponent(route[i].m)+"&output=embed";
+
+  timer=setInterval(()=>{
+    i++;
+    if(i>=route.length){clearInterval(timer);return;}
+    loc.innerText=route[i].t;
+    map.src="https://www.google.com/maps?q="+encodeURIComponent(route[i].m)+"&output=embed";
+  },7000);
+}
+
+function trackPackage(){
+  const code=document.getElementById("trackingId").value.trim();
+  const data=trackingData[code];
+  if(!data) return alert("❌ Invalid Tracking ID");
+
+  document.getElementById("resultsBody").innerHTML=`
+<tr><th colspan="2">SENDER INFORMATION</th></tr>
+<tr><td>Name</td><td>${data.sender.name}</td></tr>
+<tr><td>Country</td><td>${data.sender.country}</td></tr>
+<tr><td>Email</td><td>${data.sender.email}</td></tr>
+<tr><td>Phone</td><td>${data.sender.phone}</td></tr>
+
+<tr><th colspan="2">RECEIVER INFORMATION</th></tr>
+<tr><td>Name</td><td>${data.receiver.name}</td></tr>
+<tr><td>Country</td><td>${data.receiver.country}</td></tr>
+<tr><td>Email</td><td>${data.receiver.email}</td></tr>
+<tr><td>Address</td><td>${data.receiver.direction}</td></tr>
+<tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
+
+<tr><th colspan="2">PACKAGE STATUS</th></tr>
+<tr><td>Arrival Date</td><td>${data.arrival}</td></tr>
+<tr><td>Current Location</td><td><strong id="liveLocation"></strong><br><small style="color:green;">● Live update</small></td></tr>
+
+<tr><th colspan="2">LIVE MAP</th></tr>
+<tr><td colspan="2"><iframe id="mapFrame" class="map-box"></iframe></td></tr>
+
+<tr><th colspan="2">PACKAGE IMAGE</th></tr>
+<tr><td colspan="2"><img src="${data.image}" class="package-image"></td></tr>
+`;
+
+  document.getElementById("resultsTable").style.display="table";
+  startLive(data.route);
+}
+
+window.onload=()=>{
+  const p=new URLSearchParams(location.search);
+  const t=p.get("tracking");
+  if(t && trackingData[t]){
+    document.getElementById("trackingId").value=t;
+    setTimeout(trackPackage,500);
   }
-
-  // AUTO-TRACK ONLY JUAN CARLOS
-  window.addEventListener("load", function () {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get("tracking");
-
-    if (code === "007637220019" || code === "700262134270" || code === "700106784422" || code === "700342756987") {
-      const input = document.getElementById("trackingId");
-      input.value = code;
-
-      setTimeout(() => {
-        trackPackage();
-      }, 600);
-    }
-  });
+};
 </script>
 
-<!-- Tawk.to Script -->
-<script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-    var s1=document.createElement("script"), s0=document.getElementsByTagName("script")[0];
-    s1.async=true;
-    s1.src='https://embed.tawk.to/688747e2ac1426192beb8a30/default';
-    s1.charset='UTF-8';
-    s1.setAttribute('crossorigin','*');
-    s0.parentNode.insertBefore(s1,s0);
-  })();
+<!-- Tawk.to Live Chat -->
+<script>
+var Tawk_API=Tawk_API||{},Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src="https://embed.tawk.to/688747e2ac1426192beb8a30/default";
+s1.charset="UTF-8";
+s1.setAttribute("crossorigin","*");
+s0.parentNode.insertBefore(s1,s0);
+})();
 </script>
 
 </body>
