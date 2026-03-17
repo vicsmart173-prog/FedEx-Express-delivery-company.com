@@ -239,9 +239,13 @@ src="https://www.google.com/maps?q=${encodeURIComponent(data.final.map)}&output=
 window.onload=()=>{
  const p=new URLSearchParams(window.location.search);
  const t=p.get("tracking");
+
  if(t && trackingData[t]){
    document.getElementById("trackingId").value=t;
    trackPackage();
+
+   // 🔒 Hide tracking input when opened via link
+   document.querySelector(".track-form").style.display = "none";
  }
 };
 </script>
