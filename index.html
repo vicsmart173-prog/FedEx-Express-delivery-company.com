@@ -2,40 +2,30 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>FedEx Express Delivery Company</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<title>FedEx Express Tracking</title>
 <style>
-body{
+body {
   margin:0;
   font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   background:#f4f4f4;
 }
-
-/* HEADER */
-.fedex-header{
+.fedex-header {
   background:#4d148c;
-  padding:14px 20px;
+  color:#fff;
+  padding:15px 25px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-.logo{
-  height:40px;
+.fedex-header .logo {
+  height:50px;
 }
-.profile-icon{
-  width:42px;
-  height:42px;
-  border:2px solid #fff;
-  border-radius:50%;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  color:#fff;
+.profile-icon svg {
+  width:30px;
+  height:30px;
 }
-
-/* BUTTONS */
-.controls{
+.controls {
   display:flex;
   justify-content:center;
   gap:15px;
@@ -43,7 +33,7 @@ body{
   background:#eee;
   flex-wrap:wrap;
 }
-.controls button{
+.controls button {
   padding:12px 20px;
   border:none;
   border-radius:6px;
@@ -51,27 +41,25 @@ body{
   background:#fff;
   box-shadow:0 1px 3px rgba(0,0,0,.2);
 }
-.track-btn{
+.controls .track-btn {
   background:#4d148c;
   color:#fff;
 }
-
-/* FORM */
-.track-form{
+.track-form {
   display:flex;
   justify-content:center;
   gap:10px;
   padding:20px;
   flex-wrap:wrap;
 }
-.track-form input{
+.track-form input {
   padding:12px;
   font-size:16px;
   border:2px solid orange;
   border-radius:5px;
   width:260px;
 }
-.track-form button{
+.track-form button {
   padding:12px 18px;
   background:orange;
   border:none;
@@ -80,9 +68,7 @@ body{
   border-radius:5px;
   cursor:pointer;
 }
-
-/* TABLE */
-table{
+table {
   width:95%;
   max-width:850px;
   margin:20px auto;
@@ -90,25 +76,22 @@ table{
   display:none;
   background:#fff;
 }
-th,td{
+th, td {
   padding:10px;
   border:1px solid #ddd;
 }
-th{
+th {
   background:#4d148c;
   color:#fff;
 }
-
-.package-image{
+.package-image {
   max-width:350px;
   width:100%;
   display:block;
   margin:10px auto;
   border-radius:8px;
 }
-
-/* FOOTER */
-footer{
+footer {
   background:#4d148c;
   color:#fff;
   text-align:center;
@@ -117,14 +100,12 @@ footer{
 }
 </style>
 </head>
-
 <body>
 
 <header class="fedex-header">
-  <img src="fedex-logo.png" class="logo">
-
+  <img src="fedex-logo.png" class="logo" alt="FedEx Logo">
   <div class="profile-icon">
-    <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+    <svg fill="white" viewBox="0 0 24 24">
       <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
     </svg>
   </div>
@@ -151,48 +132,43 @@ footer{
 </footer>
 
 <script>
+// Full tracker data
 const trackingData = {
-
 "007530420019":{
  sender:{name:"Dr Jennifer",country:"Afghanistan",email:"jen32@gmail.com",phone:"00746525472"},
  receiver:{name:"JORGE EDISON FERNANDEZ MARTINEZ",country:"Colombia",email:"JORGEEDISONFERNANDEZMARTINEZ@GMAIL.COM",direction:"CALLE 4B # 3-27 BARRIO PRADO BARRANCA DE UPIA META-COLOMBIA",phone:"+573208494085"},
- arrival:"13th march 2026",
+ arrival:"13th March 2026",
  final:{text:"📍 Alfredo Vásquez Cobo International Airport – Leticia, Colombia",map:"Leticia International Airport Colombia"},
  image:"fedex-package.jpg"
 },
-
 "007231220429":{
  sender:{name:"Dr Jennifer",country:"Afghanistan",email:"jen32@gmail.com",phone:"00746525472"},
- receiver:{name:"ALDERIN FLOR LOPES",country:"Colombia",email:"empty",direction:"La cuchilla Calle 3 bia giguales finca Villa María",phone:"+573205470927"},
- arrival:"9th march 2026",
+ receiver:{name:"ALDERIN FLOR LOPES",country:"Colombia",email:"empty",direction:"La cuchilla Calle 3 bia giguales finca Villa María alado de la casa Blanca",phone:"+573205470927"},
+ arrival:"9th March 2026",
  final:{text:"📍 Alfredo Vásquez Cobo International Airport – Leticia, Colombia",map:"Leticia International Airport Colombia"},
  image:"fedex-package.jpg"
 },
-
 "700106704222":{
  sender:{name:"Jennifer benitha",country:"Afghanistan",email:"Jenh@gmail.com",phone:"00735452674"},
- receiver:{name:"WENDELL MARTINS",country:"Brazil",email:"",direction:"RUA DULCE DANTAS LOUREIRO",phone:"+55 82 9678-0738"},
- arrival:"2nd march 2026",
- final:{text:"📍 Rio Branco Airport – Brazil",map:"Rio Branco Airport Brazil"},
+ receiver:{name:"WENDELL MARTINS PIMENTEL CUNHA",country:"Brazil",email:"",direction:"RUA DULCE DANTAS LOUREIRO NÚMERO 122",phone:"+55 82 9678-0738"},
+ arrival:"2nd March 2026",
+ final:{text:"📍 Rio Branco–Plácido de Castro International Airport – Brazil",map:"Rio Branco Airport Brazil"},
  image:"fedex-package.jpg"
 },
-
 "704209042499":{
  sender:{name:"Jennifer maria",country:"Afghanistan",email:"Jenh@gmail.com",phone:"00735452674"},
- receiver:{name:"Marco Antonio Pereira",country:"Brazil",email:"marcopereira0862@gmail.com",direction:"Uberaba MG",phone:"+55 34 9672-5594"},
+ receiver:{name:"Marco Antonio Pereira ",country:"Brazil",email:"marcopereira0862@gmail.com",direction:"Antônio Dal Secchi, número 200 bairro Cássio Rezende Uberaba MG.",phone:"+55 34 9672-5594"},
  arrival:"24 February 2026",
- final:{text:"📍 Boa Vista Airport – Brazil",map:"Boa Vista Airport Brazil"},
+ final:{text:"📍Aeroporto Internacional Boa Vista-Atlas Brasil Cantanhede (BVB) ",map:"Boa Vista–Atlas International Airport Brazil"},
  image:"fedex-package.jpg"
 },
-
 "700247134001":{
  sender:{name:"Jennifer benitha",country:"Afghanistan",email:"JEN2@GMAIL.COM",phone:"+00435267485"},
- receiver:{name:"AMAURYS PONTIER",country:"Dominican Republic",email:"pontieramaurys8@gmail.com",direction:"SANTO DOMINGO",phone:"+1829-465-5563"},
+ receiver:{name:"AMAURYS PONTIER DE LOS SANTOS ",country:"Dominican Republic",email:"pontieramaurys8@gmail.com",direction:"SANTODOMINGO,LA CIÉNEGA, DOMINICAN REPUBLIC ",phone:"+1829-465-5563"},
  arrival:"03 march 2026",
- final:{text:"📍 Puerto Plata Airport",map:"Puerto Plata Airport Dominican Republic"},
+ final:{text:"📍 Aeropuerto Internacional Gregorio Luperón (POP)📍Ubicado en Puerto Plata (costa norte)",map:"Gregorio Luperón International Airport Dominican Republic"},
  image:"fedex-package.jpg"
 },
-
 "700333203387":{
  sender:{name:"Dr Jennifer",country:"Afghanistan",email:"jen32@gmail.com",phone:"00719025681"},
  receiver:{name:"Jurgen Dobner",country:"Germany",email:"empty@gmail.com",direction:"Datenschutz",phone:"+49 1520 6873650"},
@@ -200,73 +176,89 @@ const trackingData = {
  final:{text:"📍 Sylt Airport",map:"Sylt Airport Germany"},
  image:"fedex-package.jpg"
 },
-
 "700420400042":{
- sender:{name:"Jennifer Helena",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"8165810301"},
- receiver:{name:"CESAR GUZMAN",country:"Colombia",email:"empty",direction:"Colombia",phone:"+573125328815"},
+ sender:{name:"Jennifer Helena ",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"8165810301"},
+ receiver:{name:"CESAR AUGUSTO GUZMAN ",country:"Colombia",email:"empty",direction:"Colombia ",phone:"+573125328815"},
  arrival:"16th March 2026",
- final:{text:"📍 Leticia Airport",map:"Leticia Airport Colombia"},
+ final:{text:"📍Alfredo Vásquez Cobo International Airport – Leticia, Colombia ",map:"Leticia international airport Colombia"},
  image:"fedex-package.jpg"
 },
-
 "700121204002":{
- sender:{name:"Jennifer Helena",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"8165810301"},
- receiver:{name:"EMERSON CARABALI",country:"Colombia",email:"empty",direction:"CRRA 1",phone:"+57 322 5873482"},
+ sender:{name:"Jennifer Helena ",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"8165810301"},
+ receiver:{name:"EMERSON CARABALI",country:"Colombia",email:"empty",direction:"CRRA 1 I BIS #78B-19, 2DO PISO",phone:"+57 322 5873482"},
  arrival:"13th March 2026",
- final:{text:"📍 Leticia Airport",map:"Leticia Airport Colombia"},
+ final:{text:"📍Alfredo Vásquez Cobo International Airport – Leticia, Colombia ",map:"Leticia international airport Colombia"},
  image:"fedex-package.jpg"
 }
-
 };
 
-function trackPackage(){
- const code=document.getElementById("trackingId").value.trim();
- const data=trackingData[code];
- if(!data){alert("❌ Invalid Tracking ID");return;}
+// Track function
+function trackPackage(code=null){
+  if(!code){
+    code = document.getElementById("trackingId").value.trim();
+  }
+  const data = trackingData[code];
+  const table = document.getElementById("resultsTable");
+  const tbody = document.getElementById("resultsBody");
 
- document.getElementById("resultsBody").innerHTML=`
+  if(!data){
+    alert("❌ Invalid Tracking ID");
+    return;
+  }
+
+  // Freeze input if QR used
+  if(code!==document.getElementById("trackingId").value){
+    document.getElementById("trackingId").value="";
+  }
+
+  tbody.innerHTML=`
 <tr><th colspan="2">SENDER INFORMATION</th></tr>
 <tr><td>Name</td><td>${data.sender.name}</td></tr>
+<tr><td>Country</td><td>${data.sender.country}</td></tr>
+<tr><td>Email</td><td>${data.sender.email}</td></tr>
+<tr><td>Phone</td><td>${data.sender.phone}</td></tr>
 
 <tr><th colspan="2">RECEIVER INFORMATION</th></tr>
 <tr><td>Name</td><td>${data.receiver.name}</td></tr>
+<tr><td>Country</td><td>${data.receiver.country}</td></tr>
+<tr><td>Email</td><td>${data.receiver.email}</td></tr>
+<tr><td>Address</td><td>${data.receiver.direction}</td></tr>
+<tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
 
 <tr><th colspan="2">PACKAGE STATUS</th></tr>
 <tr><td>Arrival Date</td><td>${data.arrival}</td></tr>
+<tr><td>Current Location</td><td><strong>${data.final.text}</strong></td></tr>
 
 <tr><th colspan="2">LIVE MAP</th></tr>
-<tr><td colspan="2">
-<iframe style="width:100%;height:320px;border:0"
-src="https://www.google.com/maps?q=${encodeURIComponent(data.final.map)}&output=embed"></iframe>
-</td></tr>
+<tr><td colspan="2"><iframe src="https://www.google.com/maps?q=${encodeURIComponent(data.final.map)}&output=embed"></iframe></td></tr>
 
 <tr><th colspan="2">PACKAGE IMAGE</th></tr>
 <tr><td colspan="2"><img src="${data.image}" class="package-image"></td></tr>
 `;
 
- document.getElementById("resultsTable").style.display="table";
+table.style.display="table";
 }
 
+// Auto-load via QR
 window.onload=()=>{
- const p=new URLSearchParams(window.location.search);
- const t=p.get("tracking");
-
- if(t && trackingData[t]){
-   document.getElementById("trackingId").value=t;
-   trackPackage();
-   document.querySelector(".track-form").style.display="none";
- }
+  const p = new URLSearchParams(window.location.search);
+  const t = p.get("tracking");
+  if(t && trackingData[t]){
+    trackPackage(t); // Show details, input frozen
+  }
 };
 </script>
 
-<!-- ✅ TAWK.TO -->
-<script>
+<!-- TAWK.TO CHAT -->
+<script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
-var s1=document.createElement("script");
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
 s1.async=true;
 s1.src='https://embed.tawk.to/688747e2ac1426192beb8a30/default';
-document.body.appendChild(s1);
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
 })();
 </script>
 
