@@ -192,7 +192,6 @@ const trackingData = {
 }
 };
 
-// Track function
 function trackPackage(code=null){
   if(!code){
     code = document.getElementById("trackingId").value.trim();
@@ -206,7 +205,7 @@ function trackPackage(code=null){
     return;
   }
 
-  // Freeze input if QR used
+  // Freeze input when accessed via QR
   if(code!==document.getElementById("trackingId").value){
     document.getElementById("trackingId").value="";
   }
@@ -227,16 +226,29 @@ function trackPackage(code=null){
 
 <tr><th colspan="2">PACKAGE STATUS</th></tr>
 <tr><td>Arrival Date</td><td>${data.arrival}</td></tr>
-<tr><td>Current Location</td><td><strong>${data.final.text}</strong></td></tr>
 
 <tr><th colspan="2">LIVE MAP</th></tr>
-<tr><td colspan="2"><iframe src="https://www.google.com/maps?q=${encodeURIComponent(data.final.map)}&output=embed"></iframe></td></tr>
+<tr>
+  <td colspan="2" style="padding:0;">
+    <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:8px;">
+      <iframe   
+        src="https://www.google.com/maps?q=${encodeURIComponent(data.final.map)}&output=embed"   
+        style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"   
+        allowfullscreen  
+        loading="lazy">  
+      </iframe>  
+      <div style="position:absolute;bottom:8px;left:10px;color:#fff;background:rgba(0,0,0,0.7);padding:4px 8px;border-radius:4px;font-size:13px;">
+        ● Arrived at destination airport
+      </div>
+    </div>
+  </td>
+</tr>
 
 <tr><th colspan="2">PACKAGE IMAGE</th></tr>
 <tr><td colspan="2"><img src="${data.image}" class="package-image"></td></tr>
 `;
 
-table.style.display="table";
+  table.style.display="table";
 }
 
 // Auto-load via QR
@@ -244,12 +256,12 @@ window.onload=()=>{
   const p = new URLSearchParams(window.location.search);
   const t = p.get("tracking");
   if(t && trackingData[t]){
-    trackPackage(t); // Show details, input frozen
+    trackPackage(t); // Freeze input
   }
 };
 </script>
 
-<!-- TAWK.TO CHAT -->
+<!-- TAWK.TO LIVE CHAT -->
 <script type="text/javascript">
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
