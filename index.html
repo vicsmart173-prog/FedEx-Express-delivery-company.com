@@ -11,15 +11,30 @@ body{
   font-family:Segoe UI, Tahoma, Geneva, Verdana, sans-serif;
   background:#f4f4f4;
 }
-header{
+
+/* HEADER */
+.fedex-header{
   background:#4d148c;
-  color:#fff;
-  padding:20px;
+  padding:14px 20px;
   display:flex;
   justify-content:space-between;
   align-items:center;
 }
-header h1{margin:0;}
+.logo{
+  height:40px;
+}
+.profile-icon{
+  width:42px;
+  height:42px;
+  border:2px solid #fff;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+}
+
+/* BUTTONS */
 .controls{
   display:flex;
   justify-content:center;
@@ -40,6 +55,8 @@ header h1{margin:0;}
   background:#4d148c;
   color:#fff;
 }
+
+/* FORM */
 .track-form{
   display:flex;
   justify-content:center;
@@ -63,6 +80,8 @@ header h1{margin:0;}
   border-radius:5px;
   cursor:pointer;
 }
+
+/* TABLE */
 table{
   width:95%;
   max-width:850px;
@@ -79,6 +98,7 @@ th{
   background:#4d148c;
   color:#fff;
 }
+
 .package-image{
   max-width:350px;
   width:100%;
@@ -86,6 +106,8 @@ th{
   margin:10px auto;
   border-radius:8px;
 }
+
+/* FOOTER */
 footer{
   background:#4d148c;
   color:#fff;
@@ -98,9 +120,14 @@ footer{
 
 <body>
 
-<header>
-  <h1>FedEx</h1>
-  <div>👤</div>
+<header class="fedex-header">
+  <img src="fedex-logo.png" class="logo">
+
+  <div class="profile-icon">
+    <svg width="20" height="20" fill="white" viewBox="0 0 24 24">
+      <path d="M12 12c2.7 0 5-2.3 5-5s-2.3-5-5-5-5 2.3-5 5 2.3 5 5 5zm0 2c-3.3 0-10 1.7-10 5v3h20v-3c0-3.3-6.7-5-10-5z"/>
+    </svg>
+  </div>
 </header>
 
 <div class="controls">
@@ -136,7 +163,7 @@ const trackingData = {
 
 "007231220429":{
  sender:{name:"Dr Jennifer",country:"Afghanistan",email:"jen32@gmail.com",phone:"00746525472"},
- receiver:{name:"ALDERIN FLOR LOPES",country:"Colombia",email:"empty",direction:"La cuchilla Calle 3 bia giguales finca Villa María alado de la casa Blanca",phone:"+573205470927"},
+ receiver:{name:"ALDERIN FLOR LOPES",country:"Colombia",email:"empty",direction:"La cuchilla Calle 3 bia giguales finca Villa María",phone:"+573205470927"},
  arrival:"9th march 2026",
  final:{text:"📍 Alfredo Vásquez Cobo International Airport – Leticia, Colombia",map:"Leticia International Airport Colombia"},
  image:"fedex-package.jpg"
@@ -144,25 +171,25 @@ const trackingData = {
 
 "700106704222":{
  sender:{name:"Jennifer benitha",country:"Afghanistan",email:"Jenh@gmail.com",phone:"00735452674"},
- receiver:{name:"WENDELL MARTINS PIMENTEL CUNHA",country:"Brazil",email:"",direction:"RUA DULCE DANTAS LOUREIRO NÚMERO 122",phone:"+55 82 9678-0738"},
+ receiver:{name:"WENDELL MARTINS",country:"Brazil",email:"",direction:"RUA DULCE DANTAS LOUREIRO",phone:"+55 82 9678-0738"},
  arrival:"2nd march 2026",
- final:{text:"📍 Rio Branco–Plácido de Castro International Airport – Brazil",map:"Rio Branco Airport Brazil"},
+ final:{text:"📍 Rio Branco Airport – Brazil",map:"Rio Branco Airport Brazil"},
  image:"fedex-package.jpg"
 },
 
 "704209042499":{
  sender:{name:"Jennifer maria",country:"Afghanistan",email:"Jenh@gmail.com",phone:"00735452674"},
- receiver:{name:"Marco Antonio Pereira ",country:"Brazil",email:"marcopereira0862@gmail.com",direction:"Antônio Dal Secchi, número 200 bairro Cássio Rezende Uberaba MG.",phone:"+55 34 9672-5594"},
+ receiver:{name:"Marco Antonio Pereira",country:"Brazil",email:"marcopereira0862@gmail.com",direction:"Uberaba MG",phone:"+55 34 9672-5594"},
  arrival:"24 February 2026",
- final:{text:"📍Aeroporto Internacional Boa Vista-Atlas Brasil Cantanhede (BVB)",map:"Boa Vista–Atlas International Airport Brazil"},
+ final:{text:"📍 Boa Vista Airport – Brazil",map:"Boa Vista Airport Brazil"},
  image:"fedex-package.jpg"
 },
 
 "700247134001":{
  sender:{name:"Jennifer benitha",country:"Afghanistan",email:"JEN2@GMAIL.COM",phone:"+00435267485"},
- receiver:{name:"AMAURYS PONTIER DE LOS SANTOS ",country:"Dominican Republic",email:"pontieramaurys8@gmail.com",direction:"SANTODOMINGO,LA CIÉNEGA, DOMINICAN REPUBLIC",phone:"+1829-465-5563"},
+ receiver:{name:"AMAURYS PONTIER",country:"Dominican Republic",email:"pontieramaurys8@gmail.com",direction:"SANTO DOMINGO",phone:"+1829-465-5563"},
  arrival:"03 march 2026",
- final:{text:"📍 Aeropuerto Internacional Gregorio Luperón (POP)",map:"Gregorio Luperón International Airport Dominican Republic"},
+ final:{text:"📍 Puerto Plata Airport",map:"Puerto Plata Airport Dominican Republic"},
  image:"fedex-package.jpg"
 },
 
@@ -176,17 +203,17 @@ const trackingData = {
 
 "700420400042":{
  sender:{name:"Jennifer Helena",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"8165810301"},
- receiver:{name:"CESAR AUGUSTO GUZMAN",country:"Colombia",email:"empty",direction:"Colombia",phone:"+573125328815"},
+ receiver:{name:"CESAR GUZMAN",country:"Colombia",email:"empty",direction:"Colombia",phone:"+573125328815"},
  arrival:"16th March 2026",
- final:{text:"📍Alfredo Vásquez Cobo International Airport – Leticia, Colombia",map:"Leticia international airport Colombia"},
+ final:{text:"📍 Leticia Airport",map:"Leticia Airport Colombia"},
  image:"fedex-package.jpg"
 },
 
 "700121204002":{
  sender:{name:"Jennifer Helena",country:"Afghanistan",email:"jen090599807@gmail.com",phone:"8165810301"},
- receiver:{name:"EMERSON CARABALI",country:"Colombia",email:"empty",direction:"CRRA 1 I BIS #78B-19, 2DO PISO",phone:"+57 322 5873482"},
+ receiver:{name:"EMERSON CARABALI",country:"Colombia",email:"empty",direction:"CRRA 1",phone:"+57 322 5873482"},
  arrival:"13th March 2026",
- final:{text:"📍Alfredo Vásquez Cobo International Airport – Leticia, Colombia",map:"Leticia international airport Colombia"},
+ final:{text:"📍 Leticia Airport",map:"Leticia Airport Colombia"},
  image:"fedex-package.jpg"
 }
 
@@ -200,34 +227,18 @@ function trackPackage(){
  document.getElementById("resultsBody").innerHTML=`
 <tr><th colspan="2">SENDER INFORMATION</th></tr>
 <tr><td>Name</td><td>${data.sender.name}</td></tr>
-<tr><td>Country</td><td>${data.sender.country}</td></tr>
-<tr><td>Email</td><td>${data.sender.email}</td></tr>
-<tr><td>Phone</td><td>${data.sender.phone}</td></tr>
 
 <tr><th colspan="2">RECEIVER INFORMATION</th></tr>
 <tr><td>Name</td><td>${data.receiver.name}</td></tr>
-<tr><td>Country</td><td>${data.receiver.country}</td></tr>
-<tr><td>Email</td><td>${data.receiver.email}</td></tr>
-<tr><td>Address</td><td>${data.receiver.direction}</td></tr>
-<tr><td>Phone</td><td>${data.receiver.phone}</td></tr>
 
 <tr><th colspan="2">PACKAGE STATUS</th></tr>
 <tr><td>Arrival Date</td><td>${data.arrival}</td></tr>
-<tr>
-<td>Current Location</td>
-<td>
-<strong>${data.final.text}</strong><br>
-<small style="color:green;">● Arrived at destination airport</small>
-</td>
-</tr>
 
 <tr><th colspan="2">LIVE MAP</th></tr>
-<tr>
-<td colspan="2">
+<tr><td colspan="2">
 <iframe style="width:100%;height:320px;border:0"
 src="https://www.google.com/maps?q=${encodeURIComponent(data.final.map)}&output=embed"></iframe>
-</td>
-</tr>
+</td></tr>
 
 <tr><th colspan="2">PACKAGE IMAGE</th></tr>
 <tr><td colspan="2"><img src="${data.image}" class="package-image"></td></tr>
@@ -243,23 +254,19 @@ window.onload=()=>{
  if(t && trackingData[t]){
    document.getElementById("trackingId").value=t;
    trackPackage();
-
-   // 🔒 Hide tracking input when opened via link
-   document.querySelector(".track-form").style.display = "none";
+   document.querySelector(".track-form").style.display="none";
  }
 };
 </script>
 
-<!-- TAWK.TO LIVE CHAT -->
-<script type="text/javascript">
+<!-- ✅ TAWK.TO -->
+<script>
 var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
 (function(){
-var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+var s1=document.createElement("script");
 s1.async=true;
 s1.src='https://embed.tawk.to/688747e2ac1426192beb8a30/default';
-s1.charset='UTF-8';
-s1.setAttribute('crossorigin','*');
-s0.parentNode.insertBefore(s1,s0);
+document.body.appendChild(s1);
 })();
 </script>
 
